@@ -1,0 +1,13 @@
+<%= form_with(model: @tweet, local: true) do |form| %>
+  <%= form.text_area :content, placeholder: 'Write your reply here...', class: 'form-control' %>
+  <%= form.submit 'Post Reply', class: 'btn btn-primary mt-2' %>
+<% end %>
+
+<%= form_with(model: [@tweet.profile, @tweet], url: profile_tweets_path(@tweet.profile)) do |form| %>
+  <%= form.text_area :content, placeholder: 'Your tweet...' %>
+
+  <%= form.hidden_field :parent_tweet_id, value: params[:parent_tweet_id] %>
+
+  <%= form.submit 'Tweet' %>
+<% end %>
+

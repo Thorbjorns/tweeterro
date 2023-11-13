@@ -1,0 +1,9 @@
+<h1>All Groups</h1>
+
+<%= will_paginate @groups %>
+
+<% @groups.each do |group| %>
+  <div>
+    <%= link_to group.name, group %>
+  </div>
+<% end %>

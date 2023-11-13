@@ -1,0 +1,8 @@
+<!-- tweets/show.html.erb -->
+<% @tweet.replies.each do |reply| %>
+  <div>
+    <strong><%= reply.profile.username %>:</strong>
+    <%= reply.content %>
+  </div>
+<% end %>
+<%= link_to 'Back to Tweets', tweets_path, class: 'btn btn-primary' %>

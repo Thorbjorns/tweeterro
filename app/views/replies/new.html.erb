@@ -1,0 +1,5 @@
+<%= form_with(model: @reply, local: true) do |form| %>
+  <%= form.hidden_field :parent_tweet_id, value: params[:tweet_id] %>
+  <%= form.text_area :content, placeholder: 'Write your reply here...', class: 'form-control' %>
+  <%= form.submit 'Post Reply', class: 'btn btn-primary mt-2' %>
+<% end %>

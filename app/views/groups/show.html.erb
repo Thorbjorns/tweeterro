@@ -1,0 +1,19 @@
+<h1><%= @group.name %></h1>
+
+<% if current_user.profile.in_group?(@group) %>
+  <%= form_with(url: leave_group_path(@group), method: :delete) do |form| %>
+    <%= form.submit 'Leave Group', class: 'btn btn-primary' %>
+  <% end %>
+
+<% else %>
+  <%= form_with(url: join_group_path(@group), method: :post) do |form| %>
+    <%= form.submit 'Join Group', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<% @tweets.each do |tweet| %>
+  <div>
+    <strong><%= tweet.profile.user_id %>:</strong>
+    <%= tweet.content %>
+  </div>
+<% end %>

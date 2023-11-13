@@ -1,0 +1,14 @@
+<%= will_paginate @tweets %>
+
+<% @tweets.each do |tweet| %>
+  <div>
+    <strong><%= tweet.profile.username %>:</strong>
+    <%= tweet.content %>
+    <% if tweet.profile.user == current_user %>
+      <%= link_to 'Reply', new_reply_path(tweet_id: tweet.id), class: 'btn btn-sm btn-primary' %>
+      <%= link_to 'Delete', tweet_path(tweet), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' if tweet.profile.user == current_user %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= will_paginate @tweets %>
