@@ -1,0 +1,20 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: wiking123
+  host: localhost
+
+development:
+  <<: *default
+  database: dev_management_tweet
+
+test:
+  <<: *default
+  database: test_management_tweet
+
+production:
+  <<: *default
+  database: prod_management_tweet
